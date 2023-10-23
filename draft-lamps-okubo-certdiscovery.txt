@@ -3,10 +3,9 @@
 
 
 Network Working Group                                           T. Okubo
-Internet-Draft                                    Your Organization Here
-Intended status: Standards Track                              C. Bonnell
-Expires: 25 April 2024                                    DigiCert, Inc.
-                                                                 J. Gray
+Internet-Draft                                                C. Bonnell
+Intended status: Standards Track                          DigiCert, Inc.
+Expires: 25 April 2024                                           J. Gray
                                                                  Entrust
                                                          23 October 2023
 
@@ -109,9 +108,9 @@ Acknowledgments
 
 Authors' Addresses
 
-   Tomofumi Okubo
-   Your Organization Here
-   Email: tomofumi.okubo@gmail.com
+   T. Okubo
+   DigiCert, Inc.
+   Email: tomofumi.okubo+ietf@gmail.com
 
 
    C. Bonnell
