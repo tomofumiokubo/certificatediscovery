@@ -25,9 +25,9 @@ venue:
 
 author:
  -
-    fullname: "Tomofumi Okubo"
-    organization: Your Organization Here
-    email: "tomofumi.okubo@gmail.com"
+    fullname: T. Okubo
+    organization: DigiCert, Inc.
+    email: tomofumi.okubo+ietf@gmail.com
 
  -
     fullname: C. Bonnell
