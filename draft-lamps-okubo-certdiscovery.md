@@ -122,8 +122,6 @@ The syntax of subject information access extension syntax is repeated here for c
    AccessDescription  ::=  SEQUENCE {
            accessMethod          OBJECT IDENTIFIER,
            accessLocation        GeneralName  }
-
-   id-ad-certdiscovery OBJECT IDENTIFIER ::= { id-ad TBD }
 ~~~
 
 The semantics of other id-ad-certdiscovery accessLocation name forms are not defined.
@@ -133,9 +131,7 @@ The semantics of other id-ad-certdiscovery accessLocation name forms are not def
      iso(1) identified-organization(3) dod(6) internet(1)
      security(5) mechanisms(5) pkix(7) ad(48) }
     id-ad-CertDiscovery OBJECT IDENTIFIER ::= { id-ad TBD }
-~~~
 
-~~~
    RelatedCertificateDescriptor :: SEQUENCE {
 	   relatedCertificateLocation				   GeneralName,
 	   relatedCertificateSignatureAlgorithm 	[0] IMPLICIT AlgorithmIdentifier OPTIONAL,
