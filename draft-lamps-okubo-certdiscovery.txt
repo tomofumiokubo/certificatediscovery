@@ -275,9 +275,6 @@ Table of Contents
    are not defined ~~~ id-ad OBJECT IDENTIFIER ::= { iso(1) identified-
    organization(3) dod(6) internet(1) security(5) mechanisms(5) pkix(7)
    ad(48) } id-ad-CertDiscovery OBJECT IDENTIFIER ::= { id-ad TBD } ~~~
-   ~~~ id-ad OBJECT IDENTIFIER ::= { iso(1) identified-organization(3)
-   dod(6) internet(1) security(5) mechanisms(5) pkix(7) ad(48) } id-ad-
-   CertDiscovery OBJECT IDENTIFIER ::= { id-ad TBD } ~~~
 
    RelatedCertificateDescriptor :: SEQUENCE {
            relatedCertificateLocation                              GeneralName,
