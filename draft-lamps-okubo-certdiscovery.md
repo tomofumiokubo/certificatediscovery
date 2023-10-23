@@ -160,3 +160,42 @@ TBD
 {:numbered="false"}
 
 TODO acknowledge.
+
+# Appendix A. ASN.1 Module
+{:numbered="false"}
+
+The following ASN.1 module provides the complete definition of the Certificate Discovery access descriptor.
+
+~~~
+CertDiscovery { iso(1) identified-organization(3) dod(6) internet(1)
+   security(5) mechanisms(5) pkix(7) id-mod(0) id-mod-CertDiscovery(TBD1) }
+
+   DEFINITIONS EXPLICIT TAGS ::=
+
+   BEGIN
+
+   -- EXPORTS ALL --`
+
+   -- IMPORTS NOTHING --
+
+   -- OID Arc --
+
+   id-ad  OBJECT IDENTIFIER  ::= {
+     iso(1) identified-organization(3) dod(6) internet(1)
+     security(5) mechanisms(5) pkix(7) ad(48) }
+
+   -- Certificate Discovery Access Descriptor --
+
+   id-ad-CertDiscovory OBJECT IDENTIFIER ::= { id-ad TBD2 }
+
+   id-ad-relatedCertificateDescriptor OBJECT IDENTIFIER ::= { 1 2 3 }
+
+   RelatedCertificateDescriptor :: SEQUENCE {
+	   relatedCertificateLocation				GeneralName,
+	   relatedCertificateSignatureAlgorithm 	[0] IMPLICIT AlgorithmIdentifier OPTIONAL,
+	   relatedCertificatePublicKeyAlgorithm 	[1] IMPLICIT AlgorithmIdentifier OPTIONAL,
+   }
+
+   END
+~~~
+
