@@ -29,6 +29,16 @@ author:
     organization: Your Organization Here
     email: "tomofumi.okubo@gmail.com"
 
+ -
+    fullname: C. Bonnell
+    organization: DigiCert, Inc.
+    email: corey.bonnell@digicert.com
+
+ -
+    fullname: J. Gray
+    organization: Entrust
+    email: john.gray@entrust.com
+
 normative:
 
 informative:
