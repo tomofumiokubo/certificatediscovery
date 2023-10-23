@@ -124,13 +124,19 @@ The syntax of subject information access extension syntax is repeated here for c
            accessLocation        GeneralName  }
 ~~~
 
-The semantics of other id-ad-certdiscovery accessLocation name forms are not defined.
+The syntax of the related certificate descriptor is as follows:
 
 ~~~
    id-ad  OBJECT IDENTIFIER  ::= {
      iso(1) identified-organization(3) dod(6) internet(1)
      security(5) mechanisms(5) pkix(7) ad(48) }
-    id-ad-CertDiscovery OBJECT IDENTIFIER ::= { id-ad TBD }
+    id-ad-certDiscovery OBJECT IDENTIFIER ::= { id-ad TBD }
+
+   id-on-relatedCertificateDescriptor OBJECT IDENTIFIER ::= { id-on TBD2 }
+
+   on-RelatedCertificateDescriptor OTHER-NAME ::= {
+        RelatedCertificateDescriptor IDENTIFIED BY id-on-relatedCertificateDescriptor
+    }
 
    RelatedCertificateDescriptor :: SEQUENCE {
 	   relatedCertificateLocation				   GeneralName,
@@ -138,6 +144,8 @@ The semantics of other id-ad-certdiscovery accessLocation name forms are not def
 	   relatedCertificatePublicKeyAlgorithm 	[1] IMPLICIT AlgorithmIdentifier OPTIONAL,
    }
 ~~~
+
+The semantics of other id-ad-certDiscovery accessLocation name forms are not defined.
 
 # Security Considerations
 
@@ -172,21 +180,34 @@ CertDiscovery { iso(1) identified-organization(3) dod(6) internet(1)
 
    BEGIN
 
-   -- EXPORTS ALL --`
+   -- EXPORTS ALL --
 
-   -- IMPORTS NOTHING --
+   IMPORTS
+    OTHER-NAME
+    FROM PKIX1Implicit-2009
+      { iso(1) identified-organization(3) dod(6) internet(1) security(5)
+      mechanisms(5) pkix(7) id-mod(0) id-mod-pkix1-implicit-02(59) }
 
-   -- OID Arc --
+    id-pkix, id-ad
+    FROM PKIX1Explicit-2009
+      { iso(1) identified-organization(3) dod(6) internet(1) security(5)
+      mechanisms(5) pkix(7) id-mod(0) id-mod-pkix1-explicit-02(51) } ;
 
-   id-ad  OBJECT IDENTIFIER  ::= {
-     iso(1) identified-organization(3) dod(6) internet(1)
-     security(5) mechanisms(5) pkix(7) ad(48) }
+   -- Access descriptor OID --
+
+   id-ad-certDiscovery OBJECT IDENTIFIER ::= { id-ad TBD }
+
+   -- Other Name OID Arc --
+
+   id-on OBJECT IDENTIFIER ::= { id-pkix 8 }
 
    -- Certificate Discovery Access Descriptor --
 
-   id-ad-CertDiscovory OBJECT IDENTIFIER ::= { id-ad TBD2 }
+   id-on-relatedCertificateDescriptor OBJECT IDENTIFIER ::= { id-on TBD2 }
 
-   id-ad-relatedCertificateDescriptor OBJECT IDENTIFIER ::= { 1 2 3 }
+   on-RelatedCertificateDescriptor OTHER-NAME ::= {
+        RelatedCertificateDescriptor IDENTIFIED BY id-on-relatedCertificateDescriptor
+    }
 
    RelatedCertificateDescriptor :: SEQUENCE {
 	   relatedCertificateLocation				GeneralName,
