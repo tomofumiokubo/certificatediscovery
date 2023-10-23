@@ -4,8 +4,11 @@
 
 Network Working Group                                           T. Okubo
 Internet-Draft                                    Your Organization Here
-Intended status: Standards Track                         23 October 2023
-Expires: 25 April 2024
+Intended status: Standards Track                              C. Bonnell
+Expires: 25 April 2024                                    DigiCert, Inc.
+                                                                 J. Gray
+                                                                 Entrust
+                                                         23 October 2023
 
 
               A Mechanism for X.509 Certificate Discovery
@@ -67,7 +70,7 @@ Table of Contents
    4.  IANA Considerations
    5.  Normative References
    Acknowledgments
-   Author's Address
+   Authors' Addresses
 
 1.  Introduction
 
@@ -104,8 +107,18 @@ Acknowledgments
 
    TODO acknowledge.
 
-Author's Address
+Authors' Addresses
 
    Tomofumi Okubo
    Your Organization Here
    Email: tomofumi.okubo@gmail.com
+
+
+   C. Bonnell
+   DigiCert, Inc.
+   Email: corey.bonnell@digicert.com
+
+
+   J. Gray
+   Entrust
+   Email: john.gray@entrust.com
