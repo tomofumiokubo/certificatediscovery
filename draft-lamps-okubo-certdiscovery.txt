@@ -375,16 +375,16 @@ CertDiscovery { iso(1) identified-organization(3) dod(6) internet(1)
 
 Authors' Addresses
 
-   T. Okubo
+   Tomofumi Okubo
    DigiCert, Inc.
    Email: tomofumi.okubo+ietf@gmail.com
 
 
-   C. Bonnell
+   Corey Bonnell
    DigiCert, Inc.
    Email: corey.bonnell@digicert.com
 
 
-   J. Gray
+   John Gray
    Entrust
    Email: john.gray@entrust.com

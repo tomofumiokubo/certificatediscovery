@@ -5,9 +5,9 @@
 <meta content="Common,Latin" name="scripts">
 <meta content="initial-scale=1.0" name="viewport">
 <title>A Mechanism for X.509 Certificate Discovery</title>
-<meta content="T. Okubo" name="author">
-<meta content="C. Bonnell" name="author">
-<meta content="J. Gray" name="author">
+<meta content="Tomofumi Okubo" name="author">
+<meta content="Corey Bonnell" name="author">
+<meta content="John Gray" name="author">
 <meta content="
        This document specifies a method to discover a secondary X.509 certificate associated with an X.509 certificate to enable efficient multi-certificate handling in protocols. The objective is threefold: to enhance cryptographic agility, improve operational availability, and accommodate multi-key/certificate usage. The proposed method aims to maximize compatibility with existing systems and is designed to be legacy-friendly, making it suitable for environments with a mix of legacy and new implementations. It includes mechanisms to provide information about the target certificate's signature algorithm, public key algorithm and the location of the secondary X.509 certificate, empowering relying parties to make informed decisions on whether or not to fetch the secondary certificate. 
        The primary motivation for this method is to address the limitations of traditional certificate management approaches, which often lack flexibility, scalability, and seamless update capabilities. By leveraging this mechanism, subscribers can achieve cryptographic agility by facilitating the transition between different algorithms or X.509 certificate types. Operational redundancy is enhanced by enabling the use of backup certificates and minimizing the impact of primary certificate expiration or CA infrastructure failures. 
@@ -1381,7 +1381,7 @@ CertDiscovery { iso(1) identified-organization(3) dod(6) internet(1)
 <a href="#name-authors-addresses" class="section-name selfRef">Authors' Addresses</a>
       </h2>
 <address class="vcard">
-        <div dir="auto" class="left"><span class="fn nameRole">T. Okubo</span></div>
+        <div dir="auto" class="left"><span class="fn nameRole">Tomofumi Okubo</span></div>
 <div dir="auto" class="left"><span class="org">DigiCert, Inc.</span></div>
 <div class="email">
 <span>Email:</span>
@@ -1389,7 +1389,7 @@ CertDiscovery { iso(1) identified-organization(3) dod(6) internet(1)
 </div>
 </address>
 <address class="vcard">
-        <div dir="auto" class="left"><span class="fn nameRole">C. Bonnell</span></div>
+        <div dir="auto" class="left"><span class="fn nameRole">Corey Bonnell</span></div>
 <div dir="auto" class="left"><span class="org">DigiCert, Inc.</span></div>
 <div class="email">
 <span>Email:</span>
@@ -1397,7 +1397,7 @@ CertDiscovery { iso(1) identified-organization(3) dod(6) internet(1)
 </div>
 </address>
 <address class="vcard">
-        <div dir="auto" class="left"><span class="fn nameRole">J. Gray</span></div>
+        <div dir="auto" class="left"><span class="fn nameRole">John Gray</span></div>
 <div dir="auto" class="left"><span class="org">Entrust</span></div>
 <div class="email">
 <span>Email:</span>
