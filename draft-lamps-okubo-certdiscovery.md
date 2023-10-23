@@ -125,7 +125,9 @@ The syntax of subject information access extension syntax is repeated here for c
 
    id-ad-certdiscovery OBJECT IDENTIFIER ::= { id-ad TBD }
 ~~~
-The semantics of other id-ad-certdiscovery accessLocation name forms are not defined
+
+The semantics of other id-ad-certdiscovery accessLocation name forms are not defined.
+
 ~~~
    id-ad  OBJECT IDENTIFIER  ::= {
      iso(1) identified-organization(3) dod(6) internet(1)
