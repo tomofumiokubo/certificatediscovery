@@ -25,17 +25,20 @@ venue:
 
 author:
  -
-    fullname: T. Okubo
+    ins: T. Okubo
+    fullname: Tomofumi Okubo
     organization: DigiCert, Inc.
     email: tomofumi.okubo+ietf@gmail.com
 
  -
-    fullname: C. Bonnell
+    ins: C. Bonnell
+    fullname: Corey Bonnell
     organization: DigiCert, Inc.
     email: corey.bonnell@digicert.com
 
  -
-    fullname: J. Gray
+    ins: J. Gray
+    fullname: John Gray
     organization: Entrust
     email: john.gray@entrust.com
 
