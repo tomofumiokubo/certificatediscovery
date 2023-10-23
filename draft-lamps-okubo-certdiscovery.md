@@ -97,6 +97,49 @@ The third use case is where one certificate is used by the named subject for a p
 
 {::boilerplate bcp14-tagged}
 
+## Definitions
+
+For conciseness, this section defines several terms that are frequently used throughout this specification.
+
+Primary Certificate: The X.509 certificate that has the subjectInfoAccess extension with the certDiscovery accessMethod pointing to a Secondary Certificate.
+
+Secondary Certificate: The X.509 certificate that is referenced by the Primary Certificate in the subjectInfoAccess extension certDiscovery accessMethod
+
+# Certificate Discovery Access Method Certificates
+
+This document specifies the new certDiscovery access method for X.509 Subject Information Access (SIA) extension defined in {{!RFC5280}}.
+The certDiscovery access method has 3 components. The relatedCertificateLocation which is a GeneralName that has the pointer to the Secondary Certificate. The relatedCertificateSignatureAlgorithm which indicates the signature algorithm used in the Secondary Certificate. Finally, the relatedCertificatePublicKeyAlgorithm which indicates the public key algorithm used in the Secondary Certificate.
+
+When the validation of the Primary Certificate fails, the software that understands the SIA extension and the certDiscovery access method uses the information to determine whether or not to fetch the Secondary Certificate. The software will look at the relatedCertificateSignatureAlgorithm and relatedCertificatePublicKeyAlgorithm to determine whether the Secondary Certificate has the signature algorithm and certificate public key algorthm it can process. If the software understands the signature algorithm and certificate public key algorthm, the software fetches the certificate from the URI specified in the relatedCertificateLocation and attempt another validation. Otherwise, the validation simply fails.
+
+The syntax of subject information access extension syntax is repeated here for convenience:
+
+~~~
+   SubjectInfoAccessSyntax  ::=
+           SEQUENCE SIZE (1..MAX) OF AccessDescription
+
+   AccessDescription  ::=  SEQUENCE {
+           accessMethod          OBJECT IDENTIFIER,
+           accessLocation        GeneralName  }
+
+   id-ad-certdiscovery OBJECT IDENTIFIER ::= { id-ad TBD }
+~~~
+The semantics of other id-ad-certdiscovery accessLocation name forms
+   are not defined
+~~~
+   id-ad  OBJECT IDENTIFIER  ::= {
+     iso(1) identified-organization(3) dod(6) internet(1)
+     security(5) mechanisms(5) pkix(7) ad(48) }
+    id-ad-CertDiscovery OBJECT IDENTIFIER ::= { id-ad TBD }
+~~~
+
+~~~
+   RelatedCertificateDescriptor :: SEQUENCE {
+	   relatedCertificateLocation				   GeneralName,
+	   relatedCertificateSignatureAlgorithm 	[0] IMPLICIT AlgorithmIdentifier OPTIONAL,
+	   relatedCertificatePublicKeyAlgorithm 	[1] IMPLICIT AlgorithmIdentifier OPTIONAL,
+   }
+~~~
 
 # Security Considerations
 
