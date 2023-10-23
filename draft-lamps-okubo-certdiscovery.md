@@ -1,7 +1,7 @@
 ---
-title: "TODO - Your title"
+title: "A Mechanism for X.509 Certificate Discovery"
 abbrev: "TODO - Abbreviation"
-category: info
+category: std
 
 docname: draft-lamps-okubo-certdiscovery-latest
 submissiontype: IETF  # also: "independent", "editorial", "IAB", or "IRTF"
