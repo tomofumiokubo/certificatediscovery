@@ -57,8 +57,41 @@ The approach ensures backward compatibility with existing systems and leverages 
 
 # Introduction
 
-TODO Introduction
+The efficient discovery of X.509 certificates plays a critical role in modern cryptographic systems. Traditional certificate management approaches often face challenges in terms of flexibility, scalability, and seamless updates. To address these limitations, this document proposes a novel approach to certificate discovery utilizing the Subject Information Access extension within X.509 certificates.
 
+The primary objective of this approach is to enable efficient multi-certificate handling in protocols, offering several key benefits. First, it enhances cryptographic agility by facilitating smooth transitions between different algorithms or X.509 certificate types. This is particularly valuable in scenarios where subscribers need to upgrade their cryptographic algorithms or adopt new certificate types while maintaining backward compatibility with existing systems.
+
+Second, the proposed method improves operational availability by introducing redundancy in certificate usage. It enables the use of secondary certificates that can serve as backups, ensuring seamless continuity of services even in the event of primary certificate expiration or disruptions in the CA infrastructure.
+
+Finally, the approach accommodates multi-key/certificate usage, allowing for a relying party to obtain certificates to perform cryptographic operations that are not certified by a single certificate.
+
+The proposed method is designed to maximize compatibility with existing systems, including legacy implementations. It leverages the SIA extension, which is already established in X.509 certificates, and does not require modifications to the referring certificates. This ensures ease of adoption and avoids disruptions to current certificate management practices.
+
+It's important to note that this specification does not aim to solve or assure the identity (subject) binding between the primary and secondary certificates. Instead, it focuses on providing a mechanism for efficient certificate discovery, while identity assurance can be addressed through complementary mechanisms such as draft-becker-guthrie-cert-binding-for-multi-auth-02.
+
+In the following sections, we will outline the details of the proposed approach, including the structure of the SIA extension, the modes of operation, and the considerations for secure implementation and deployment.
+
+By leveraging the capabilities of the SIA extension for certificate discovery, organizations can enhance cryptographic agility, improve operational availability, and accommodate complex multi-key/certificate scenarios, leading to more secure and resilient cryptographic systems.
+
+## Use Case 1: Cryptographic Agility
+
+The first use case is improving cryptographic agility. For example, the Primary Certificate uses a widely adopted cryptographic algorithm while the Secondary Certificate uses the algortihm that is new and not widely adopted yet.
+The relying party will be presented with the opportunity to try the new algorithms and certificate types. This will be
+particularly useful when transitioning from one algrithm to another or to a new certificate/credential type.
+
+In addition, the server may look at the logs to determine how ready the client side is to shift to completely rollover to the new algorithm. This allows the subscriber to gather the metrics necessary to make an informed decision on the the best timing to do an algorithm rollover without relying on third parties or security researchers. This is particularly useful for PKIs that have a wide array of client software and requires careful considerations. #fintech #IoT
+
+## Use Case 2: Operational Redundancy
+
+The second use case is where the Primary and Secondary Certificate adopts the same cryptographic algorithms but for instance, uses certificates issued by two different CAs or two certificates that has different validity periods. The Secondary Certificate may be used as a backup certificate in case the Primary Certificate validity is about to expire.
+
+A common issue is when the intermediate CA certificate expires and the subscriber forgets to update the intermediate CA configured on the server. Similar to when some software collects the parent certificate through authorityInfoAccess CA Issuer access method when the intermediate certificate is absent, the peer certificate can be obtained.
+
+Due to increased adoption of the ACME protocol, the burden of maintaining the availability of a service is shifted to the CA issuance infrastructure and the availability would be dependent on the CA infrastructure. To increase the operational redundancy, this mechanism can be used to point to another set of certificates that are independent from the Primary Certificate to minimize the chance of a failed transaction.
+
+## Use Case 3: Dual Use
+
+The third use case is where one certificate is used by the named subject for a particular cryptographic operation and a relying party wishes to obtain the public key of the named subject for a different cryptographic operation. For example, the recipient of an email message which was signed using a key that is certified by a single-use signing S/MIME certificate may wish to send an encrypted email to the sender. In this case, the recipient will need the sender's public key used for encryption. A pointer to the named subject's encryption certificate will permit the recipient to send an encrypted reply.
 
 # Conventions and Definitions
 
@@ -67,12 +100,15 @@ TODO Introduction
 
 # Security Considerations
 
-TODO Security
+This mechanism does not assure the binding of the identity of the subject in the Primary Certificate and the Secondary Certificate. To assure the binding of identities of the two certificate, a confirming CA should adopt a separate mechanism such as draft-becker-guthrie-cert-binding-for-multi-auth-02 for to explicitly express the binding of identities.
 
+There is a chance the Secondary Certificate may also have the certDiscovery access method. In order to avoid cyclic loops or infinite chaining, the validator should be mindful of how many fetching it allows in one validation.
+
+The same security considerations for CAIssuer access method outlined in {{RFC5280}} applies to the certDiscovery access method. In order to avoid recursive certificate validations which involve online revocation checking, untrusted transport protocols (such as plaintext HTTP) are commonly used for serving certificate files. While the use of such protocols avoids issues with recursive certification path validations and associated online revocation checking, it also enables an attacker to tamper with data and perform substitution attacks. Clients fetching certificates using the mechanism specified in this document MUST treat downloaded certificate data as untrusted and perform requisite checks to ensure that the downloaded data is not malicious.
 
 # IANA Considerations
 
-This document has no IANA actions.
+TBD
 
 
 --- back
