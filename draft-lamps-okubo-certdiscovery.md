@@ -138,10 +138,10 @@ The syntax of the related certificate descriptor is as follows:
         RelatedCertificateDescriptor IDENTIFIED BY id-on-relatedCertificateDescriptor
     }
 
-   RelatedCertificateDescriptor :: SEQUENCE {
+   RelatedCertificateDescriptor ::= SEQUENCE {
 	   relatedCertificateLocation				   GeneralName,
 	   relatedCertificateSignatureAlgorithm 	[0] IMPLICIT AlgorithmIdentifier OPTIONAL,
-	   relatedCertificatePublicKeyAlgorithm 	[1] IMPLICIT AlgorithmIdentifier OPTIONAL,
+	   relatedCertificatePublicKeyAlgorithm 	[1] IMPLICIT AlgorithmIdentifier OPTIONAL
    }
 ~~~
 
@@ -209,10 +209,10 @@ CertDiscovery { iso(1) identified-organization(3) dod(6) internet(1)
         RelatedCertificateDescriptor IDENTIFIED BY id-on-relatedCertificateDescriptor
     }
 
-   RelatedCertificateDescriptor :: SEQUENCE {
+   RelatedCertificateDescriptor ::= SEQUENCE {
 	   relatedCertificateLocation				GeneralName,
 	   relatedCertificateSignatureAlgorithm 	[0] IMPLICIT AlgorithmIdentifier OPTIONAL,
-	   relatedCertificatePublicKeyAlgorithm 	[1] IMPLICIT AlgorithmIdentifier OPTIONAL,
+	   relatedCertificatePublicKeyAlgorithm 	[1] IMPLICIT AlgorithmIdentifier OPTIONAL
    }
 
    END
