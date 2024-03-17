@@ -1280,10 +1280,10 @@ The certDiscovery access method has 3 components. The relatedCertificateLocation
         RelatedCertificateDescriptor IDENTIFIED BY id-on-relatedCertificateDescriptor
     }
 
-   RelatedCertificateDescriptor :: SEQUENCE {
+   RelatedCertificateDescriptor ::= SEQUENCE {
            relatedCertificateLocation                              GeneralName,
            relatedCertificateSignatureAlgorithm         [0] IMPLICIT AlgorithmIdentifier OPTIONAL,
-           relatedCertificatePublicKeyAlgorithm         [1] IMPLICIT AlgorithmIdentifier OPTIONAL,
+           relatedCertificatePublicKeyAlgorithm         [1] IMPLICIT AlgorithmIdentifier OPTIONAL
    }
 </pre><a href="#section-3-6" class="pilcrow">¶</a>
 </div>
@@ -1381,10 +1381,10 @@ CertDiscovery { iso(1) identified-organization(3) dod(6) internet(1)
         RelatedCertificateDescriptor IDENTIFIED BY id-on-relatedCertificateDescriptor
     }
 
-   RelatedCertificateDescriptor :: SEQUENCE {
+   RelatedCertificateDescriptor ::= SEQUENCE {
            relatedCertificateLocation                           GeneralName,
            relatedCertificateSignatureAlgorithm         [0] IMPLICIT AlgorithmIdentifier OPTIONAL,
-           relatedCertificatePublicKeyAlgorithm         [1] IMPLICIT AlgorithmIdentifier OPTIONAL,
+           relatedCertificatePublicKeyAlgorithm         [1] IMPLICIT AlgorithmIdentifier OPTIONAL
    }
 
    END
