@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-03-17T00:05:02.973503+00:00",
+  "timestamp": "2024-03-19T00:04:46.156390+00:00",
   "repo": "tomofumiokubo/certificatediscovery",
   "labels": [
     {
@@ -75,6 +75,34 @@
       "mergedBy": "tomofumiokubo",
       "mergeCommit": {
         "oid": "c615233f7f2cf69b9e2e7e16450e8bff8696d120"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 2,
+      "id": "PR_kwDOKkGlhc5p2PAR",
+      "title": "Update draft-lamps-okubo-certdiscovery.md",
+      "url": "https://github.com/tomofumiokubo/certificatediscovery/pull/2",
+      "state": "MERGED",
+      "author": "mandelj7",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2024-03-17T00:32:36Z",
+      "updatedAt": "2024-03-17T04:38:47Z",
+      "baseRepository": "tomofumiokubo/certificatediscovery",
+      "baseRefName": "main",
+      "baseRefOid": "6e7037f73845eb5067c02ec4854ceefa01a90a95",
+      "headRepository": "tomofumiokubo/certificatediscovery",
+      "headRefName": "mandelj7-patch-1",
+      "headRefOid": "77317fdf55169e8b484fe72fcf5ef94d87d6ef4d",
+      "closedAt": "2024-03-17T04:38:47Z",
+      "mergedAt": "2024-03-17T04:38:47Z",
+      "mergedBy": "tomofumiokubo",
+      "mergeCommit": {
+        "oid": "2628767e62b7f3fa6a2a8c43f8dbdfb729515991"
       },
       "comments": [],
       "reviews": []
