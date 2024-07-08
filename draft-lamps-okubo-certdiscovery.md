@@ -42,6 +42,18 @@ author:
     organization: Entrust
     email: john.gray@entrust.com
 
+ -
+    ins: M. Ounsworth
+    fullname: Mike Ounsworth
+    organization: Entrust
+    email: mike.ounsworth@entrust.com
+
+ -
+    ins: J. Mandel
+    fullname: Joe Mandel
+    organization: AKAYLA, Inc.
+    email: joe@akayla.com
+
 normative:
 
 informative:
