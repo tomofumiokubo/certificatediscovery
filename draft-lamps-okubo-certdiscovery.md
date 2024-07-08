@@ -72,7 +72,7 @@ The approach ensures backward compatibility with existing systems and leverages 
 
 # Introduction
 
-The efficient discovery of X.509 certificates plays a critical role in modern cryptographic systems. Traditional certificate management approaches often face challenges in terms of flexibility, scalability, and seamless updates. To address these limitations, this document proposes a novel approach to certificate discovery utilizing the Subject Information Access extension within X.509 certificates.
+The efficient discovery of X.509 certificates play a critical role in modern cryptographic systems. Traditional certificate management approaches often face challenges in terms of flexibility, scalability, and seamless updates. To address these limitations, this document proposes a novel approach to certificate discovery utilizing the Subject Information Access extension within X.509 certificates.
 
 The primary objective of this approach is to enable efficient multi-certificate handling in protocols, offering several key benefits. First, it enhances cryptographic agility by facilitating smooth transitions between different algorithms or X.509 certificate types. This is particularly valuable in scenarios where subscribers need to upgrade their cryptographic algorithms or adopt new certificate types while maintaining backward compatibility with existing systems.
 
@@ -90,9 +90,9 @@ By leveraging the capabilities of the SIA extension for certificate discovery, o
 
 ## Use Case 1: Cryptographic Agility
 
-The first use case is improving cryptographic agility. For example, the Primary Certificate uses a widely adopted cryptographic algorithm while the Secondary Certificate uses the algortihm that is new and not widely adopted yet. The relying party will be presented with the opportunity to try the new algorithms and certificate types. This will be particularly useful when transitioning from one algrithm to another or to a new certificate/credential type.
+The first use case is improving cryptographic agility. For example, the Primary Certificate uses a widely adopted cryptographic algorithm while the Secondary Certificate uses the algorithm that is new and not widely adopted yet. The relying party will be presented with the opportunity to try the new algorithms and certificate types. This will be particularly useful when transitioning from one algorithm to another or to a new certificate/credential type.
 
-In addition, the server may look at the logs to determine how ready the client side is to shift to completely rollover to the new algorithm. This allows the subscriber to gather the metrics necessary to make an informed decision on the the best timing to do an algorithm rollover without relying on third parties or security researchers. This is particularly useful for PKIs that have a wide array of client software and requires careful considerations. #fintech #IoT
+In addition, the server may look at the logs to determine how ready the client side is to shift to completely rollover to the new algorithm. This allows the subscriber to gather the metrics necessary to make an informed decision on the best timing to do an algorithm rollover without relying on third parties or security researchers. This is particularly useful for PKIs that have a wide array of client software and requires careful considerations. #fintech #IoT
 
 ## Use Case 2: Operational Redundancy
 
@@ -123,7 +123,7 @@ Secondary Certificate: The X.509 certificate that is referenced by the Primary C
 This document specifies the new certDiscovery access method for X.509 Subject Information Access (SIA) extension defined in {{!RFC5280}}.
 The certDiscovery access method has 3 components. The relatedCertificateLocation which is a GeneralName that has the pointer to the Secondary Certificate. The relatedCertificateSignatureAlgorithm which indicates the signature algorithm used in the Secondary Certificate. Finally, the relatedCertificatePublicKeyAlgorithm which indicates the public key algorithm used in the Secondary Certificate.
 
-When the validation of the Primary Certificate fails, the software that understands the SIA extension and the certDiscovery access method uses the information to determine whether or not to fetch the Secondary Certificate. The software will look at the relatedCertificateSignatureAlgorithm and relatedCertificatePublicKeyAlgorithm to determine whether the Secondary Certificate has the signature algorithm and certificate public key algorthm it can process. If the software understands the signature algorithm and certificate public key algorthm, the software fetches the certificate from the URI specified in the relatedCertificateLocation and attempt another validation. Otherwise, the validation simply fails.
+When the validation of the Primary Certificate fails, the software that understands the SIA extension and the certDiscovery access method uses the information to determine whether or not to fetch the Secondary Certificate. The software will look at the relatedCertificateSignatureAlgorithm and relatedCertificatePublicKeyAlgorithm to determine whether the Secondary Certificate has the signature algorithm and certificate public key algorithm it can process. If the software understands the signature algorithm and certificate public key algorithm, the software fetches the certificate from the URI specified in the relatedCertificateLocation and attempts another validation. Otherwise, the validation simply fails.
 
 The syntax of subject information access extension syntax is repeated here for convenience:
 
@@ -161,9 +161,9 @@ The semantics of other id-ad-certDiscovery accessLocation name forms are not def
 
 # Security Considerations
 
-This mechanism does not assure the binding of the identity of the subject in the Primary Certificate and the Secondary Certificate. To assure the binding of identities of the two certificate, a confirming CA should adopt a separate mechanism such as draft-becker-guthrie-cert-binding-for-multi-auth-02 for to explicitly express the binding of identities.
+This mechanism does not assure the binding of the identity of the subject in the Primary Certificate and the Secondary Certificate. To assure the binding of identities of the two certificates, a confirming CA should adopt a separate mechanism such as draft-becker-guthrie-cert-binding-for-multi-auth-02 for to explicitly express the binding of identities.
 
-There is a chance the Secondary Certificate may also have the certDiscovery access method. In order to avoid cyclic loops or infinite chaining, the validator should be mindful of how many fetching it allows in one validation.
+There is a chance the Secondary Certificate may also have the certDiscovery access method. In order to avoid cyclic loops or infinite chaining, the validator should be mindful of how many fetching attempts it allows in one validation.
 
 The same security considerations for CAIssuer access method outlined in {{RFC5280}} applies to the certDiscovery access method. In order to avoid recursive certificate validations which involve online revocation checking, untrusted transport protocols (such as plaintext HTTP) are commonly used for serving certificate files. While the use of such protocols avoids issues with recursive certification path validations and associated online revocation checking, it also enables an attacker to tamper with data and perform substitution attacks. Clients fetching certificates using the mechanism specified in this document MUST treat downloaded certificate data as untrusted and perform requisite checks to ensure that the downloaded data is not malicious.
 
