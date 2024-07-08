@@ -5,9 +5,12 @@
 Network Working Group                                           T. Okubo
 Internet-Draft                                                C. Bonnell
 Intended status: Standards Track                          DigiCert, Inc.
-Expires: 18 September 2024                                       J. Gray
+Expires: 9 January 2025                                          J. Gray
+                                                            M. Ounsworth
                                                                  Entrust
-                                                           17 March 2024
+                                                               J. Mandel
+                                                            AKAYLA, Inc.
+                                                             8 July 2024
 
 
               A Mechanism for X.509 Certificate Discovery
@@ -71,7 +74,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 18 September 2024.
+   This Internet-Draft will expire on 9 January 2025.
 
 Copyright Notice
 
@@ -407,3 +410,13 @@ Authors' Addresses
    John Gray
    Entrust
    Email: john.gray@entrust.com
+
+
+   Mike Ounsworth
+   Entrust
+   Email: mike.ounsworth@entrust.com
+
+
+   Joe Mandel
+   AKAYLA, Inc.
+   Email: joe@akayla.com
