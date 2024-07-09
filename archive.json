@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-07-07T00:05:38.926376+00:00",
+  "timestamp": "2024-07-09T00:05:00.474899+00:00",
   "repo": "tomofumiokubo/certificatediscovery",
   "labels": [
     {
@@ -105,6 +105,42 @@
         "oid": "2628767e62b7f3fa6a2a8c43f8dbdfb729515991"
       },
       "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 3,
+      "id": "PR_kwDOKkGlhc50vx_f",
+      "title": "Update draft-lamps-okubo-certdiscovery.md",
+      "url": "https://github.com/tomofumiokubo/certificatediscovery/pull/3",
+      "state": "MERGED",
+      "author": "johngray-dev",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Spelled checked and made some minor editorial changes",
+      "createdAt": "2024-07-08T21:17:06Z",
+      "updatedAt": "2024-07-08T21:28:11Z",
+      "baseRepository": "tomofumiokubo/certificatediscovery",
+      "baseRefName": "main",
+      "baseRefOid": "ed1046b1c8ad898f1451277b71573f6bceca7f84",
+      "headRepository": "tomofumiokubo/certificatediscovery",
+      "headRefName": "JGray-suggestions",
+      "headRefOid": "cc63b21b01c05083cdb610b51a008c560329c301",
+      "closedAt": "2024-07-08T21:20:47Z",
+      "mergedAt": "2024-07-08T21:20:47Z",
+      "mergedBy": "johngray-dev",
+      "mergeCommit": {
+        "oid": "2d37cc98eb3e0857df1b61b0e25831a9302c9983"
+      },
+      "comments": [
+        {
+          "author": "johngray-dev",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Merging typo and editorial fixes to main branch.",
+          "createdAt": "2024-07-08T21:20:34Z",
+          "updatedAt": "2024-07-08T21:20:34Z"
+        }
+      ],
       "reviews": []
     }
   ]
