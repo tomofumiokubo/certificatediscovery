@@ -3,14 +3,15 @@
 
 
 Network Working Group                                           T. Okubo
-Internet-Draft                                                C. Bonnell
-Intended status: Standards Track                          DigiCert, Inc.
-Expires: 9 January 2025                                          J. Gray
+Internet-Draft                              Penguin Securities Pte. Ltd.
+Intended status: Standards Track                              C. Bonnell
+Expires: 18 April 2025                                    DigiCert, Inc.
+                                                                 J. Gray
                                                             M. Ounsworth
                                                                  Entrust
                                                                J. Mandel
                                                             AKAYLA, Inc.
-                                                             8 July 2024
+                                                         15 October 2024
 
 
               A Mechanism for X.509 Certificate Discovery
@@ -74,7 +75,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 9 January 2025.
+   This Internet-Draft will expire on 18 April 2025.
 
 Copyright Notice
 
@@ -286,13 +287,16 @@ Table of Contents
     }
 
    RelatedCertificateDescriptor ::= SEQUENCE {
-           relatedCertificateLocation                              GeneralName,
-           relatedCertificateSignatureAlgorithm         [0] IMPLICIT AlgorithmIdentifier OPTIONAL,
-           relatedCertificatePublicKeyAlgorithm         [1] IMPLICIT AlgorithmIdentifier OPTIONAL
+           uniformResourceIdentifier IA5String,
+           signatureAlgorithm   [0] IMPLICIT AlgorithmIdentifier OPTIONAL,
+           publicKeyAlgorithm   [1] IMPLICIT AlgorithmIdentifier OPTIONAL
    }
 
    The semantics of other id-ad-certDiscovery accessLocation name forms
    are not defined.
+
+   Note: For a description of uniformResourceIdentifier consult section
+   4.2.2.1 of [!RFC5280].
 
 4.  Security Considerations
 
@@ -388,9 +392,9 @@ CertDiscovery { iso(1) identified-organization(3) dod(6) internet(1)
     }
 
    RelatedCertificateDescriptor ::= SEQUENCE {
-           relatedCertificateLocation                           GeneralName,
-           relatedCertificateSignatureAlgorithm         [0] IMPLICIT AlgorithmIdentifier OPTIONAL,
-           relatedCertificatePublicKeyAlgorithm         [1] IMPLICIT AlgorithmIdentifier OPTIONAL
+           uniformResourceIdentifier IA5String,
+           signatureAlgorithm   [0] IMPLICIT AlgorithmIdentifier OPTIONAL,
+           publicKeyAlgorithm   [1] IMPLICIT AlgorithmIdentifier OPTIONAL
    }
 
    END
@@ -398,7 +402,7 @@ CertDiscovery { iso(1) identified-organization(3) dod(6) internet(1)
 Authors' Addresses
 
    Tomofumi Okubo
-   DigiCert, Inc.
+   Penguin Securities Pte. Ltd.
    Email: tomofumi.okubo+ietf@gmail.com
 
 
