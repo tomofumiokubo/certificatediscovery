@@ -27,7 +27,7 @@ author:
  -
     ins: T. Okubo
     fullname: Tomofumi Okubo
-    organization: DigiCert, Inc.
+    organization: Penguin Securities Pte. Ltd.
     email: tomofumi.okubo+ietf@gmail.com
 
  -
@@ -151,13 +151,15 @@ The syntax of the related certificate descriptor is as follows:
     }
 
    RelatedCertificateDescriptor ::= SEQUENCE {
-	   relatedCertificateLocation				   GeneralName,
-	   relatedCertificateSignatureAlgorithm 	[0] IMPLICIT AlgorithmIdentifier OPTIONAL,
-	   relatedCertificatePublicKeyAlgorithm 	[1] IMPLICIT AlgorithmIdentifier OPTIONAL
+	   uniformResourceIdentifier IA5String,
+	   signatureAlgorithm 	[0] IMPLICIT AlgorithmIdentifier OPTIONAL,
+	   publicKeyAlgorithm 	[1] IMPLICIT AlgorithmIdentifier OPTIONAL
    }
 ~~~
 
 The semantics of other id-ad-certDiscovery accessLocation name forms are not defined.
+
+Note:  For a description of uniformResourceIdentifier consult section 4.2.2.1 of [!RFC5280].
 
 # Security Considerations
 
@@ -222,9 +224,9 @@ CertDiscovery { iso(1) identified-organization(3) dod(6) internet(1)
     }
 
    RelatedCertificateDescriptor ::= SEQUENCE {
-	   relatedCertificateLocation				GeneralName,
-	   relatedCertificateSignatureAlgorithm 	[0] IMPLICIT AlgorithmIdentifier OPTIONAL,
-	   relatedCertificatePublicKeyAlgorithm 	[1] IMPLICIT AlgorithmIdentifier OPTIONAL
+	   uniformResourceIdentifier IA5String,
+	   signatureAlgorithm 	[0] IMPLICIT AlgorithmIdentifier OPTIONAL,
+	   publicKeyAlgorithm 	[1] IMPLICIT AlgorithmIdentifier OPTIONAL
    }
 
    END
