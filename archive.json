@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-10-29T00:06:16.008597+00:00",
+  "timestamp": "2024-10-31T00:06:09.268308+00:00",
   "repo": "tomofumiokubo/certificatediscovery",
   "labels": [
     {
@@ -55,16 +55,24 @@
       "id": "I_kwDOKkGlhc6btK1U",
       "title": "Update to IA5String has a couple typos",
       "url": "https://github.com/tomofumiokubo/certificatediscovery/issues/4",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "johngray-dev",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "A quick read just revealed a couple places that still referred to GeneralName.   Should be updated to IA5String for the URL location.",
       "createdAt": "2024-10-24T18:37:01Z",
-      "updatedAt": "2024-10-24T18:37:01Z",
-      "closedAt": null,
-      "comments": []
+      "updatedAt": "2024-10-29T20:32:45Z",
+      "closedAt": "2024-10-29T20:32:44Z",
+      "comments": [
+        {
+          "author": "johngray-dev",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Merged the changes to the document.",
+          "createdAt": "2024-10-29T20:32:44Z",
+          "updatedAt": "2024-10-29T20:32:44Z"
+        }
+      ]
     },
     {
       "number": 6,
@@ -78,9 +86,17 @@
       "labels": [],
       "body": "I was wondering if we should include an optional hash of the related certificate.   That would constrain issuance order (as the hash of one of them would need to be known), but it would give you the guarantee that you got the right certificate and that someone didn't compromise the URL location.    So it would be an optional stronger binding.\r\n\r\nRelatedCertificateDescriptor ::= SEQUENCE {\r\n\t   uniformResourceIdentifier IA5String,\r\n\t   signatureAlgorithm \t[0] IMPLICIT AlgorithmIdentifier OPTIONAL,\r\n\t   publicKeyAlgorithm \t[1] IMPLICIT AlgorithmIdentifier OPTIONAL,\r\n           hashAlgorithmId      [2] IMPLICIT AlgorithmIdentifier OPTIONAL,\r\n           certHash             [3] IMPLICIT OCTET STRING OPTIONAL \r\n   }\r\n\r\nThe hashAlgorithmId would be the hashAlgorithm used for certHash.   The certHash would be the hash of the related certificate using the specified hashAlgorithmId.   It is optional and would be a useful check if it is there and would offer a strong binding in one direction (which is still better than weak two-way binding).\r\n\r\nExample UseCase...   PQ transition:    Issue ML-DSA certificate first with weak binding (no hash) to the location of a future traditional cert, then issue the Traditional RSA cert with this extension with the hash of the ML-DSA certificate.    Traditional software works fine.   When traditional software is upgraded the reference is used and hash verified.  If ML-DSA side needs to check traditional, it can still use the weaker (no hash) reference.   It could check that the traditional RSA has a reference including a hash of itself (but there would be no guarantee that a compromised traditional RSA certificate couldn't have just copied the public hash of the ML-DSA cert).   However this is not any weaker than what we are already proposing.\r\n\r\nAlternatively, we could change certhash into TBSCertificate hash which could allow strong two-way binding, but then we would have to remove the RelatedCertificateDescriptor extension from each of the TBSCertificates first before computing the hash which would strongly couple issuance.   I don't think we want this one.  \r\n\r\nSo I think adding a hash in one direction is straight forward and gives it a stronger property.   I think most use-cases would only use it in one direction anyway.\r\n",
       "createdAt": "2024-10-24T19:25:25Z",
-      "updatedAt": "2024-10-24T19:25:25Z",
+      "updatedAt": "2024-10-29T20:42:21Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "johngray-dev",
+          "authorAssociation": "COLLABORATOR",
+          "body": "RelatedCertificateDescriptor ::= SEQUENCE {\r\n  uniformResourceIdentifier IA5String,\r\n  signatureAlgorithm [0] IMPLICIT AlgorithmIdentifier OPTIONAL,\r\n  publicKeyAlgorithm [1] IMPLICIT AlgorithmIdentifier OPTIONAL,\r\n  certHash [2] IMPLICIT  CertHash OPTIONAL\r\n}\r\n\r\nCertHash ::= SEQUENCE {\r\n       value       OCTET STRING,\r\n       hashAlgorithm  AlgorithmIdentifier DEFAULT {algorithm sha-256}}\r\n}",
+          "createdAt": "2024-10-29T20:42:20Z",
+          "updatedAt": "2024-10-29T20:42:20Z"
+        }
+      ]
     }
   ],
   "pulls": [
@@ -181,24 +197,26 @@
       "id": "PR_kwDOKkGlhc5_z_db",
       "title": "Update draft-lamps-okubo-certdiscovery.md",
       "url": "https://github.com/tomofumiokubo/certificatediscovery/pull/5",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "johngray-dev",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "Remove references to GeneralName and the fixed the names in the description of the fields.",
       "createdAt": "2024-10-24T18:44:50Z",
-      "updatedAt": "2024-10-24T18:44:50Z",
+      "updatedAt": "2024-10-29T20:32:26Z",
       "baseRepository": "tomofumiokubo/certificatediscovery",
       "baseRefName": "main",
       "baseRefOid": "1ee394b30405835bd27f319252f50aa46e2e32ef",
       "headRepository": "tomofumiokubo/certificatediscovery",
       "headRefName": "4-RemoveGeneralNameReferences",
       "headRefOid": "7c7031343c414e74396065de6c9a4ac27f16f014",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "closedAt": "2024-10-29T20:32:26Z",
+      "mergedAt": "2024-10-29T20:32:26Z",
+      "mergedBy": "johngray-dev",
+      "mergeCommit": {
+        "oid": "6dd2e5de6c3af7b1d56b48422f099e676c5ad171"
+      },
       "comments": [],
       "reviews": []
     }
