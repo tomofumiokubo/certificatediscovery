@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-01-28T00:05:49.273251+00:00",
+  "timestamp": "2025-01-30T00:05:48.869186+00:00",
   "repo": "tomofumiokubo/certificatediscovery",
   "labels": [
     {
@@ -97,6 +97,22 @@
           "updatedAt": "2024-10-29T20:42:20Z"
         }
       ]
+    },
+    {
+      "number": 7,
+      "id": "I_kwDOKkGlhc6n82bR",
+      "title": "Would a dataURI be allowed in RelatedCertificateDescriptor.uniformResourceIdentifier?",
+      "url": "https://github.com/tomofumiokubo/certificatediscovery/issues/7",
+      "state": "OPEN",
+      "author": "ralienpp",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "Asking for a friend; would it be possible to use a [dataURI ](https://www.rfc-editor.org/rfc/rfc2397.html)in the `uniformResourceIdentifier` field?\n\n```\nRelatedCertificateDescriptor ::= SEQUENCE { \n    uniformResourceIdentifier IA5String,    // here, something like `data:application/pkix-cert;base64,blablabla`\n    signatureAlgorithm [0] IMPLICIT AlgorithmIdentifier OPTIONAL, \n    publicKeyAlgorithm [1] IMPLICIT AlgorithmIdentifier OPTIONAL \n}\n```\n\n\nLet's say, in my scenario I have limited connectivity options and it is not guaranteed that I'll be able to fetch the other certificate, so it would be nice if I get it right away on a platter.\n",
+      "createdAt": "2025-01-29T10:04:14Z",
+      "updatedAt": "2025-01-29T10:04:14Z",
+      "closedAt": null,
+      "comments": []
     }
   ],
   "pulls": [
