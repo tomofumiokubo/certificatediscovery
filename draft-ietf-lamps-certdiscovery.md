@@ -3,7 +3,7 @@ title: "A Mechanism for X.509 Certificate Discovery"
 abbrev: "TODO - Abbreviation"
 category: std
 
-docname: draft-lamps-okubo-certdiscovery-latest
+docname: draft-ietf-lamps-certdiscovery-latest
 submissiontype: IETF  # also: "independent", "editorial", "IAB", or "IRTF"
 number:
 date:
@@ -21,7 +21,7 @@ venue:
 #  mail: WG@example.com
 #  arch: https://example.com/WG
   github: "tomofumiokubo/certificatediscovery"
-  latest: "https://tomofumiokubo.github.io/certificatediscovery/draft-lamps-okubo-certdiscovery.html"
+  latest: "https://tomofumiokubo.github.io/certificatediscovery/draft-ietf-lamps-certdiscovery.html"
 
 author:
  -
