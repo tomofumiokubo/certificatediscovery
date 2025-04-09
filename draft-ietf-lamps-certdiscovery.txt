@@ -5,17 +5,17 @@
 Network Working Group                                           T. Okubo
 Internet-Draft                              Penguin Securities Pte. Ltd.
 Intended status: Standards Track                              C. Bonnell
-Expires: 8 May 2025                                       DigiCert, Inc.
+Expires: 11 October 2025                                  DigiCert, Inc.
                                                                  J. Gray
                                                             M. Ounsworth
                                                                  Entrust
                                                                J. Mandel
                                                             AKAYLA, Inc.
-                                                         4 November 2024
+                                                            9 April 2025
 
 
               A Mechanism for X.509 Certificate Discovery
-                 draft-lamps-okubo-certdiscovery-latest
+                 draft-ietf-lamps-certdiscovery-latest
 
 Abstract
 
@@ -52,9 +52,9 @@ About This Document
    This note is to be removed before publishing as an RFC.
 
    The latest revision of this draft can be found at
-   https://tomofumiokubo.github.io/certificatediscovery/draft-lamps-
-   okubo-certdiscovery.html.  Status information for this document may
-   be found at https://datatracker.ietf.org/doc/draft-lamps-okubo-
+   https://tomofumiokubo.github.io/certificatediscovery/draft-ietf-
+   lamps-certdiscovery.html.  Status information for this document may
+   be found at https://datatracker.ietf.org/doc/draft-ietf-lamps-
    certdiscovery/.
 
    Source for this draft and an issue tracker can be found at
@@ -75,11 +75,11 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 8 May 2025.
+   This Internet-Draft will expire on 11 October 2025.
 
 Copyright Notice
 
-   Copyright (c) 2024 IETF Trust and the persons identified as the
+   Copyright (c) 2025 IETF Trust and the persons identified as the
    document authors.  All rights reserved.
 
    This document is subject to BCP 78 and the IETF Trust's Legal
