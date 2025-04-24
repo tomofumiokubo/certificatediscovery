@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-01-30T00:05:48.869186+00:00",
+  "timestamp": "2025-04-24T00:22:33.224039+00:00",
   "repo": "tomofumiokubo/certificatediscovery",
   "labels": [
     {
@@ -111,6 +111,22 @@
       "body": "Asking for a friend; would it be possible to use a [dataURI ](https://www.rfc-editor.org/rfc/rfc2397.html)in the `uniformResourceIdentifier` field?\n\n```\nRelatedCertificateDescriptor ::= SEQUENCE { \n    uniformResourceIdentifier IA5String,    // here, something like `data:application/pkix-cert;base64,blablabla`\n    signatureAlgorithm [0] IMPLICIT AlgorithmIdentifier OPTIONAL, \n    publicKeyAlgorithm [1] IMPLICIT AlgorithmIdentifier OPTIONAL \n}\n```\n\n\nLet's say, in my scenario I have limited connectivity options and it is not guaranteed that I'll be able to fetch the other certificate, so it would be nice if I get it right away on a platter.\n",
       "createdAt": "2025-01-29T10:04:14Z",
       "updatedAt": "2025-01-29T10:04:14Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 8,
+      "id": "I_kwDOKkGlhc6zgWql",
+      "title": "April 22nd Authors meeting with updated ASN.1 proposal",
+      "url": "https://github.com/tomofumiokubo/certificatediscovery/issues/8",
+      "state": "OPEN",
+      "author": "johngray-dev",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "\nNotes for April 22nd Authors meeting:\n\nAction Joe:  Send chairs e-mail about linking drafts in dataTracker:\nhttps://datatracker.ietf.org/doc/draft-lamps-okubo-certdiscovery/\nhttps://datatracker.ietf.org/doc/draft-ietf-lamps-certdiscovery/\n\nAction Tomofumi:  will transfer the repository ownership to lamps_wg\n\nDiscussed:  Cleaning up the text for operational redundancy\n\nPurposes we have in Mind:\n\nSolid purpose ideas:\n1.  Discovery - Discover another certificate (with our without Hash)\n\u2002\u2002\u2002\u2002\u2002\u2002- Algorithm update (RSA -> ML-DSA for example)  -> URL\n        - Strong downgrade (ML-DSA -> RSA) - strong cryptographic chaining?  ->URL\n        - Full certificate -> Full Encoded Cert\n        - Use a CHOICE (SEQUENCE { URI, OptionalPurpose, OptionalHash} or FullCert }\n2.  Dual Usage  \n\nNeed more thinking:\n3.  Statement of Possession?\n4.  Operational Redundancy?\n5.  Others?\n\n\nPossible updated ASN.1\n- Taking into account adding extensible purpose idea,\n- Alex Raliens inclusion of the full certificate\n- Added the Optional Hash for stronger 1-way binding\n\nTested via ASN.1 playground https://asn1.io/asn1playground/\n\nCertDiscovery { iso(1) identified-organization(3) dod(6) internet(1)\n   security(5) mechanisms(5) pkix(7) id-mod(0) id-mod-CertDiscovery(TBD) }\n\n   DEFINITIONS EXPLICIT TAGS ::=\n\n   BEGIN\n\n   -- EXPORTS ALL --\n\n   IMPORTS\n    OTHER-NAME\n    FROM PKIX1Implicit-2009\n      { iso(1) identified-organization(3) dod(6) internet(1) security(5)\n      mechanisms(5) pkix(7) id-mod(0) id-mod-pkix1-implicit-02(59) }\n\n    id-pkix, id-ad, Certificate\n    FROM PKIX1Explicit-2009\n      { iso(1) identified-organization(3) dod(6) internet(1) security(5)\n      mechanisms(5) pkix(7) id-mod(0) id-mod-pkix1-explicit-02(51) } ;\n\n   -- Access descriptor OID --\n\n   id-ad-certDiscovery OBJECT IDENTIFIER ::= { id-ad TBD }\n\n   -- Other Name OID Arc --\n\n   id-on OBJECT IDENTIFIER ::= { id-pkix 8 }\n\n   -- Certificate Discovery Access Descriptor --\n\n   id-on-relatedCertificateDescriptor OBJECT IDENTIFIER ::= { id-on TBD }\n\n   on-RelatedCertificateDescriptor OTHER-NAME ::= {\n        RelatedCertificateDescriptor IDENTIFIED BY id-on-relatedCertificateDescriptor\n    }\n\n   -- Purpose OJBECT IDENTIFIER  \n   id-rcd-discovery OBJECT IDENTIFIER ::= {id-on-relatedCertificateDescriptor 1}\n   id-rcd-du OBJECT IDENTIFIER ::= {id-on-relatedCertificateDescriptor 2}\n   \n   DiscoveryPurposeId ::= OBJECT IDENTIFIER\n\n   RelatedCertificateDescriptor ::= SEQUENCE {\n       certref CertReference,  \n       purpose DiscoveryPurposeId,\n       signatureAlgorithm [0] IMPLICIT AlgorithmIdentifier OPTIONAL,\n       publicKeyAlgorithm [1] IMPLICIT AlgorithmIdentifier OPTIONAL\n   }\n\n   CertReference ::= CHOICE {\n     direct Certificate,\n     indirect SEQUENCE {\n       uniformResourceIdentifier IA5String,\n       certHash [0] IMPLICIT CertHash OPTIONAL\n     }\n   }\n\n   CertHash ::= SEQUENCE {\n      value OCTET STRING,\n      hashAlgorithm AlgorithmIdentifier DEFAULT {algorithm sha-256}\n   }\n\n   END\n",
+      "createdAt": "2025-04-22T16:45:43Z",
+      "updatedAt": "2025-04-22T16:45:43Z",
       "closedAt": null,
       "comments": []
     }
